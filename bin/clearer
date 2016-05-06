@@ -1,0 +1,42 @@
+#!/usr/bin/env node
+
+var pkg = require('../package')
+var resolvePath = require('path').resolve
+var watch = require('watch')
+var program = require('commander')
+var glob = require('glob')
+var cwd = process.cwd()
+
+program
+  .version(pkg.version)
+  .option('-w, --watch', 'watch fs for system changes')
+
+program.parse(process.argv)
+
+var testfile = program.args[0]
+var target = resolvePath(cwd, testfile)
+
+if (!testfile) {
+  console.log('must supply test file')
+}
+
+function run() {
+  require(target)
+}
+
+if (program.watch) {
+  console.log('watching for file changes')
+  var opts = {
+    ignoreDotFiles: true,
+    ignoreDirectoryPattern: /node_modules/
+  }
+  watch.watchTree(cwd, opts, function(f, curr, prev) {
+    // busts the npm cache
+    require.cache[target] = null
+    run()
+  })
+}
+else {
+  run()
+}
+

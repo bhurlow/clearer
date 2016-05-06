@@ -27,6 +27,12 @@ function finalize() {
   console.log()
   console.log(` --- completed ${total} tests : ${passes} passed : ${fails} failed  ---`)
   console.log()
+
+  // clear counters
+  running = 0
+  total = 0
+  fails = 0
+  passes = 0
 }
 
 module.exports = function(desc, gen) {

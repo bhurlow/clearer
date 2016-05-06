@@ -1,6 +1,5 @@
 
 var test = require('./')
-var co = require('co')
 
 function timer() {
   return new Promise(function(resolve, reject) {
@@ -13,7 +12,7 @@ function timer() {
 test('bing bing foops', function*() {
   this.equals(100, 100)
   var res1 = yield Promise.resolve(true);
-  this.ok(true, 'bad new')
+  this.ok('', 'thats bad')
 })
 
 test('kafoo blam', function*() {
