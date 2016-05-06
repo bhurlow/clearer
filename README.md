@@ -2,6 +2,25 @@
 
 an ultrasimple test runner that let's you yield promises inside your test cases
 
+```
+npm install -g clearer
+```
+
+restults in:
+
+```
+clearer -w example.js:
+
+✓ bing bing foops
+✓ kafoo blam
+x kafoo blam : thats bad
+x kafoo blam
+
+--- completed 2 tests : 2 passed : 2 failed  ---
+```
+
+an example test file:
+
 ```javascript
 var test = require('clearer')
 
