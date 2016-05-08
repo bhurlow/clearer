@@ -1,7 +1,7 @@
 {
   "name": "clearer",
   "bin": "./bin/clearer",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "tape inspired test runner with jazz",
   "main": "index.js",
   "scripts": {

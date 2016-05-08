@@ -50,9 +50,13 @@ module.exports = function(desc, gen) {
     else fail(desc, msg)
   }
 
-  co(gen).then(function(ret) {
-    running--
-    if (running <= 0) finalize()
-  })
+  co(gen)
+    .then(function(ret) {
+      running--
+      if (running <= 0) finalize()
+    })
+    .catch(function(err) {
+      console.log(err)
+    })
 
 }
